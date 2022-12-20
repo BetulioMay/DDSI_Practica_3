@@ -58,6 +58,11 @@ create table se_juega_en(
 
 -- TRIGGER RS3.1
 
+/*
+LINKS de ayuda:
+Como obtener las diferencia entre fechas: https://stackoverflow.com/questions/9488475/how-can-i-get-the-difference-in-hours-between-two-dates
+*/
+
 create or replace trigger comprobarFechaPartido
 before insert on partido
 declare
@@ -72,16 +77,5 @@ begin
     end if;
   end loop;
 end;
-
-
-
-
-
-
-
-
-
-
-
 
 
