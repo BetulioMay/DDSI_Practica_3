@@ -56,10 +56,22 @@ create table se_juega_en(
     cod_partido references partido(cod_partido) primary key
 );
 
+-- TRIGGER RS3.1
 
-
-
-
+create or replace trigger comprobarFechaPartido
+before insert on partido
+declare
+  cursor partidos is select * from partidos;
+  dif_fechas int;
+begin
+  for regPartido in partidos loop
+    -- if regPartido.fecha - :new.fecha > 3 -> ERROR
+    dif_fechas := 24 * (regPartido.fecha - :new.fecha);
+    if dif_fechas <= 3 then
+      insert into partidos values (:new.cod_partido, :new.fecha);
+    end if;
+  end loop;
+end;
 
 
 
