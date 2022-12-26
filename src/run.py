@@ -15,6 +15,7 @@ from constants import MENU_OPTION
 import transactions.register_order as register_order
 from transactions.drop_insert import drop_tables, create_tables, insert_stock
 from transactions.show_tables import show_tables
+from transactions.partido import insert_partido
 
 
 def run():
@@ -49,7 +50,11 @@ def run():
                 print("Not implemented.")
             case MENU_OPTION.GUARDAR_PARTIDO.value:
                 # TODO: Implementar funcion de insertar un nuevo partido RF(3.1)
-                print("Not implemented.")
+                if not insert_partido(cursor=cursor):
+                    connection.rollback(conn=conn)
+                else:
+                    connection.commit(conn=conn)
+                    print("Se ha guardado el partido correctamente ✅")
             case MENU_OPTION.EXIT_MENU.value:
                 connection.close_cursor(cursor=cursor)
                 connection.close_connection(conn=conn)
