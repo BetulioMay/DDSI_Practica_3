@@ -49,16 +49,18 @@ def run():
                 # TODO: Implementar funcion de insertar una nueva compra pagada (RF2.4)
                 print("Not implemented.")
             case MENU_OPTION.GUARDAR_PARTIDO.value:
-                # TODO: Implementar funcion de insertar un nuevo partido RF(3.1)
+                # TODO: Testear esta transaccion (RF3.1)
                 if not insert_partido(cursor=cursor):
+                    print("⏪ Rolling back...")
                     connection.rollback(conn=conn)
                 else:
                     connection.commit(conn=conn)
-                    print("Se ha guardado el partido correctamente ✅")
+                    print("✅ Se ha guardado el partido correctamente")
             case MENU_OPTION.EXIT_MENU.value:
+                print("🔌 Cerrando conexion...")
                 connection.close_cursor(cursor=cursor)
                 connection.close_connection(conn=conn)
-                print("BYE.")
+                print("👋 BYE.")
                 finish = True
 
 

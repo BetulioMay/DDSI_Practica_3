@@ -47,7 +47,7 @@ def insert_partido(cursor):
         )
 
     except Exception as e:
-        print("No se pudo realizar la transaccion 'Insertar partido'", e)
+        print("❌ No se pudo realizar la transaccion 'Insertar partido'", e)
         return False
 
     return True
