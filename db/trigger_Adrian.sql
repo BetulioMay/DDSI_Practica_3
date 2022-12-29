@@ -1,17 +1,17 @@
-create or replace trigger comprobarFechaPartido
-before insert on se_juega_en
+create or replace trigger comprobarPago
+before insert on paga
 for each row
 declare
-  cursor partidos_en_pista is select * from partido p natural join se_juega_en sje where :new.num_pista = sje.num_pista;
-  new_fecha date;
-  dif_fechas integer;
+  cursor pago_comprador is select * from paga p where :new.dni = p.dni;
+  fecha timestamp;
+  dif_fechas float;
 begin
-  select fecha into new_fecha from partido p where p.cod_partido = :new.cod_partido;
+  select fecha_pago into fecha from paga p where p.dni = :new.dni;
 
-  for regPartido in partidos_en_pista loop
-    dif_fechas := 24 * abs(regPartido.fecha - new_fecha);
-    if (:new.cod_partido <> regPartido.cod_partido and dif_fechas <= 3) then
-      raise_application_error(-20600, :new.cod_partido || 'No se puede asignar la pista al partido');
+  for regPago in pago_comprador loop
+    dif_fechas := :new.fecha_pago - regPago.fecha_pago;
+    if (dif_fechas >= 1) then
+      raise_application_error(-20600, :new.dni || 'No se puede realizar otro pago');
     end if;
   end loop;
 end;
