@@ -9,7 +9,7 @@ begin
   select fecha_pago into fecha from paga p where p.dni = :new.dni;
 
   for regPago in pago_comprador loop
-    dif_fechas := :new.fecha_pago - regPago.fecha_pago;
+    dif_fechas := abs(cast(to_timestamp(:new.fecha_pago) as  date) - cast(to_timestamp(regPago.fecha_pago) as date));
     if (dif_fechas >= 1) then
       raise_application_error(-20600, :new.dni || 'No se puede realizar otro pago');
     end if;
