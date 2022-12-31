@@ -1,5 +1,5 @@
 create table espectador(
-    dni varchar(8) not null, 
+    dni varchar(9) not null, 
     nombre varchar(50),
     apellidos varchar(100),
     correo_electronico varchar(81),
@@ -8,7 +8,7 @@ create table espectador(
 );
 
 create table comprador(
-    dni varchar(8) not null references espectador(dni),
+    dni varchar(9) not null references espectador(dni),
     primary key (dni)
 );
 
