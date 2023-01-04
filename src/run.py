@@ -60,7 +60,7 @@ def run():
                 print("🔌 Cerrando conexion...")
                 connection.close_cursor(cursor=cursor)
                 connection.close_connection(conn=conn)
-                print("👋 BYE.")
+                print("👋🏼 BYE.")
                 finish = True
 
 

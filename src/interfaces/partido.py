@@ -6,7 +6,7 @@ def get_input_data():
     print(c.HEADER)
 
     # NOTE: Segun el requisito funcional, `cod_partido` no es
-    #       un dato de entrada. Sin embargo, por motivos de sencillez
+    #       un dato de entrada. Sin embargo, por motivos de simplicidad
     #       se lo pedimos al usuario.
 
     # Pedir al usuario estos datos
@@ -25,6 +25,8 @@ def get_input_data():
     ):
         print("Introduzca el codigo de partido")
         data["cod_partido"] = input(c.IN_PROMPT)
+    data["cod_partido"] = int(data["cod_partido"])
+
     while len(data["dnis"]) != 5:
         # Reset la lista de dnis
         data["dnis"].clear()
@@ -36,7 +38,12 @@ def get_input_data():
         dnis = dnis.split(sep=" ")
         for dni in dnis:
             # Chequear la validez de los DNIs. No lo puede hacer el SGBD.
-            if len(dni) == 9 and dni[len(dni) - 1].isdigit():
+            if (
+                len(dni) == 9
+                and not dni[len(dni) - 1].isdigit()
+                # Solo hay una letra. El ultimo simbolo.
+                and len([x for x in dni if not x.isdigit()]) == 1
+            ):
                 data["dnis"].append(dni)
             else:
                 print(f"DNI {dni} invalido. Introduzca los datos de nuevo.")
@@ -50,6 +57,7 @@ def get_input_data():
     ):
         print("Introduzca el numero de pista")
         data["num_pista"] = input(c.IN_PROMPT)
+    data["num_pista"] = int(data["num_pista"])
 
     while (
         data["cod_edicion"] == ""
@@ -58,7 +66,21 @@ def get_input_data():
     ):
         print("Introduzca el codigo de edicion")
         data["cod_edicion"] = input(c.IN_PROMPT)
+    data["cod_edicion"] = int(data["cod_edicion"])
 
     # Tomamos la fecha actual
-    data["fecha"] = datetime.now()
+    while True:
+        print("Introduzca la fecha del partido ('DD/MM/YY HH:MM:SS')")
+        strdate = input("(DEFAULT toma la fecha actual)" + c.IN_PROMPT)
+        try:
+            dt_object = (
+                datetime.strptime(strdate, "%d/%m/%y %H:%M:%S")
+                if strdate != "" or strdate != None
+                else datetime.now()
+            )
+            data["fecha"] = dt_object
+            break
+        except Exception as e:
+            print("🚫 Fecha no valida. Intentalo otra vez.")
+
     return data
