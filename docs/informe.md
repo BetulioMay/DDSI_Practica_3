@@ -65,9 +65,3 @@ bash run.sh
 ## Fuentes y referencias
 
 - Documentación oficial de la librería `cx_Oracle`: https://cx-oracle.readthedocs.io/.
-
-## Autores y contribución
-
-- César A. Mayora Suárez: Instalación y elección de dependencias, transacción "Dar de alta pedido".
-- Daniel Pérez: transacción "Mostrar tablas".
-- Adrian Ladron de Guevara Alvarez: transacción "Creación y borrado de tablas".
