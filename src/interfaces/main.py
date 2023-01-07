@@ -6,9 +6,10 @@ def main_menu():
 	print("Selecciona una opcion:")
 	print("1. Crear tablas")
 	print("2. Borrar tablas")
-	print("3. Dar de alta pedido")
-	print("4. Mostrar tablas")
-	print("5. Salir")
+	print("3. Parejas entrenador")
+	print("4. Pagar compra")
+	print("5. Guardar partido")
+	print("6. Salir")
 	option = input(c.IN_PROMPT)
 	
 	# Devolvemos cero como opcion nula
