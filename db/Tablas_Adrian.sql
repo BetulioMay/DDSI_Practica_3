@@ -64,19 +64,21 @@ create table hecha(
 
 -- Disparador RS2.1
 --Un espectador solo puede pagar una compra por día.Si el espectador ya había realizado una compra y la había pagado, no se le dejará pagar otra compra y se devuelve un mensaje de error”.
- insert into espectador(dni,nombre) values ('7557761','Pepe');
- insert into espectador(dni,nombre) values ('577618','Paco');
- insert into comprador values ('577618');
- insert into comprador values ('7557761');
+ insert into espectador(dni,nombre) values ('12345678A','Pepe');
+ insert into espectador(dni,nombre) values ('57761873P','Paco');
+ insert into comprador values ('57761873P');
+ insert into comprador values ('12345678A');
  insert into compra values ('1235448');
  insert into compra values ('321');
+ insert into inicia values ('321','30/11/2002-17:04:30','12345678A');
+ insert into inicia values ('1235448','30/11/2002-19:04:30','57761873P');
 
  --inserta bien
- insert into paga values ('1235448', '28/11/2002-20:04:30', '577618');
- insert into paga values ('321', '30/11/2002-20:04:30', '7557761');
+ insert into paga values ('1235448', '28/11/2002-20:04:30', '57761873P');
+ insert into paga values ('321', '30/11/2002-20:04:30', '12345678A');
  --da error
- insert into paga values ('321', '30/11/2002-23:04:30', '7557761');
+ insert into paga values ('321', '30/11/2002-23:04:30', '12345678A');
  --da error
- insert into paga values ('321', '31/11/2002-17:04:30', '7557761');
+ insert into paga values ('321', '31/11/2002-17:04:30', '12345678A');
  --inserta bien
- insert into paga values ('321', '5/12/2002-23:04:30', '7557761');
+ insert into paga values ('321', '5/12/2002-23:04:30', '12345678A');
