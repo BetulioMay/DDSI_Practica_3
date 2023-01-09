@@ -2,7 +2,7 @@ from interfaces.pagar_compra import get_input_data
 from datetime import datetime
 import cx_Oracle
 
-# Inserta un nuevo partido en el sistema.
+# Inserta un nuevo pago en el sistema.
 def pagar_compra(cursor):
 
     data = get_input_data()
@@ -50,7 +50,7 @@ def pagar_compra(cursor):
         """
         cursor.execute(sql, cod_compra=data["cod_compra"], fecha_pago=fecha, dni_comprador=dni)
     except Exception as e:
-        print("❌ No se pudo realizar la transaccion 'Insertar partido'", e)
+        print("❌ No se pudo realizar la transaccion 'Pagar la compra'", e)
         return False
     
     # Mostramos la fecha de pago y el codigo de compra pagada
