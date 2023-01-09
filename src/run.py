@@ -12,11 +12,9 @@ load_dotenv()
 import connection
 import interfaces.main as main
 from constants import MENU_OPTION
-from transactions.drop_insert import drop_tables, create_tables, insert_stock
 from transactions.partido import insert_partido
 from transactions.pagar_compra import pagar_compra
 from transactions.show_tables import parejas_entrenador
-
 
 
 def run():
@@ -28,20 +26,6 @@ def run():
     while not finish:
         option = main.main_menu()
         match option:
-            case MENU_OPTION.CREATE_TABLES.value:
-                # TODO: Crear otro insert `insert_tables` donde se inserten los datos
-                # que se necesiten, en vez de insert_stock (codigo viejo)
-                if create_tables(cursor=cursor) and insert_stock(cursor=cursor):
-                    print("Tablas creadas.")
-                    connection.commit(conn)
-                else:
-                    print("No se han conseguido crear el stock.")
-            case MENU_OPTION.DROP_TABLES.value:
-                if drop_tables(cursor=cursor):
-                    print("Tablas borradas")
-                    connection.commit(conn)
-                else:
-                    print("No se han conseguido borrar las tablas")
             case MENU_OPTION.PAREJAS_ENTRENADOR.value:
                 # TODO: Implementar funcion que muestre las tablas de las parejas
                 # que un entrenador entrena en una edicion (RF1.4)
