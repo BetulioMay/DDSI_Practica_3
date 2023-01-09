@@ -70,6 +70,8 @@ create table hecha(
  insert into comprador values ('12345678A');
  insert into compra values ('1235448');
  insert into compra values ('321');
+ insert into inicia values ('321','30/11/2002-17:04:30','12345678A');
+ insert into inicia values ('1235448','30/11/2002-19:04:30','57761873P');
 
  --inserta bien
  insert into paga values ('1235448', '28/11/2002-20:04:30', '57761873P');
