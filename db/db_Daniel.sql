@@ -1,7 +1,11 @@
 /* Creacion tablas */
 /*Tabla jugador*/
 create table jugador(
-    dni_jug number(8) primary key
+    dni_jug varchar(9) primary key,
+    nombre varchar(50),
+    apellidos varchar(100),
+    correo_electronico varchar(81),
+    sexo varchar(1)
 );
 
 /*Tabla Pareja*/
@@ -40,7 +44,7 @@ create table entrena(
 
 /*Tabla entrenador*/
 create table entrenador(
-    dni_entr number(8) primary key
+    dni_entr varchar(9) primary key
 );
 
 

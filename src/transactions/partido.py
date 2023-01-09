@@ -43,7 +43,9 @@ def insert_partido(cursor):
         INSERT INTO arbitra VALUES (:dniarb, :codpar)
         """
         cursor.execute(
-            sql, dniarb=data["dnis"][len(data["dnis"] - 1)], codpar=data["cod_partido"]
+            sql,
+            dniarb=(data["dnis"])[len(data["dnis"]) - 1],
+            codpar=data["cod_partido"],
         )
 
     except Exception as e:

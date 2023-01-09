@@ -69,18 +69,11 @@ def get_input_data():
     data["cod_edicion"] = int(data["cod_edicion"])
 
     # Tomamos la fecha actual
-    while True:
-        print("Introduzca la fecha del partido ('DD/MM/YY HH:MM:SS')")
-        strdate = input("(DEFAULT toma la fecha actual)" + c.IN_PROMPT)
-        try:
-            dt_object = (
-                datetime.strptime(strdate, "%d/%m/%y %H:%M:%S")
-                if strdate != "" or strdate != None
-                else datetime.now()
-            )
-            data["fecha"] = dt_object
-            break
-        except Exception as e:
-            print("🚫 Fecha no valida. Intentalo otra vez.")
+    print("Introduzca la fecha del partido ('DD/MM/YY HH:MM:SS')")
+    strdate = input("(DEFAULT toma la fecha actual)" + c.IN_PROMPT)
+    if len(strdate) > 0:
+        data["fecha"] = datetime.strptime(strdate, "%d/%m/%y %H:%M:%S")
+    else:
+        data["fecha"] = datetime.now()
 
     return data
