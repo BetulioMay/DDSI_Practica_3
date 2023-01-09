@@ -17,7 +17,7 @@ begin
     select sexo into sex2 from jugador j where :new.dni2 = j.dni_jug;
 
     if (sex1 <> sex2) then
-        raise_application_error(-20600, '2 jugadores de diferente sexo no pueden ser pareja');
+        raise_application_error(-20600, ' 2 jugadores de diferente sexo no pueden ser pareja');
     end if;
 end;
 
