@@ -19,3 +19,5 @@ insert into pista values (5, 'pista 5', 35);
 insert into arbitro values ('12312312A', 'arbitro1', 'arbitro1');
 
 insert into parejas values ('12345678R', '87654321R', '09876543R', '56784321R');
+
+-- 12345678R 87654321R 09876543R 56784321R 12312312A
