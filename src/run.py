@@ -16,6 +16,8 @@ import transactions.register_order as register_order
 from transactions.drop_insert import drop_tables, create_tables, insert_stock
 from transactions.show_tables import show_tables
 from transactions.partido import insert_partido
+from transactions.pagar_compra import pagar_compra
+
 
 
 def run():
@@ -46,8 +48,12 @@ def run():
                 # que un entrenador entrena en una edicion (RF1.4)
                 print("Not implemented.")
             case MENU_OPTION.PAGAR_COMPRA.value:
-                # TODO: Implementar funcion de insertar una nueva compra pagada (RF2.4)
-                print("Not implemented.")
+                if not pagar_compra(cursor=cursor):
+                    print("⏪ Rolling back...")
+                    connection.rollback(conn=conn)
+                else:
+                    connection.commit(conn=conn)
+                    print("✅ Se ha guardado el pago correctamente")
             case MENU_OPTION.GUARDAR_PARTIDO.value:
                 # TODO: Testear esta transaccion (RF3.1)
                 if not insert_partido(cursor=cursor):
