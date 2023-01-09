@@ -12,7 +12,7 @@ def get_input_data():
     while (
         data["cod_compra"] == ""
         or data["cod_compra"] == None
-        or len(data["cod_compra"]) > 15
+        or len(data["cod_compra"]) >= 15
     ):
         print("Introduzca el codigo de compra finalizada")
         data["cod_compra"] = input(c.IN_PROMPT)
