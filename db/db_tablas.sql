@@ -20,11 +20,15 @@ create table arbitro(
 );
 
 create table jugador(
-    dni_jug number(8) primary key
+    dni_jug varchar(9) primary key,
+    nombre varchar(50),
+    apellidos varchar(100),
+    correo_electronico varchar(81),
+    sexo varchar(1)
 );
 
 create table entrenador(
-    dni_entr number(8) primary key
+    dni_entr varchar(9) primary key
 );
 
 create table espectador(
@@ -78,6 +82,7 @@ create table parejas(
     foreign key (dni1_1, dni1_2) references pareja(dni1, dni2),
     foreign key (dni2_1, dni2_2) references pareja(dni1, dni2)
 );
+
 create table participan(
     dni_1,
     dni_2,
@@ -151,3 +156,5 @@ create table hecha(
     cod_edicion references edicion(cod_edicion) not null,
     primary key (cod_compra)
 );
+
+commit;

@@ -12,11 +12,10 @@ load_dotenv()
 import connection
 import interfaces.main as main
 from constants import MENU_OPTION
-import transactions.register_order as register_order
 from transactions.drop_insert import drop_tables, create_tables, insert_stock
-from transactions.show_tables import show_tables
 from transactions.partido import insert_partido
 from transactions.pagar_compra import pagar_compra
+from transactions.show_tables import parejas_entrenador
 
 
 
@@ -46,7 +45,7 @@ def run():
             case MENU_OPTION.PAREJAS_ENTRENADOR.value:
                 # TODO: Implementar funcion que muestre las tablas de las parejas
                 # que un entrenador entrena en una edicion (RF1.4)
-                print("Not implemented.")
+                parejas_entrenador(cursor=cursor)
             case MENU_OPTION.PAGAR_COMPRA.value:
                 if not pagar_compra(cursor=cursor):
                     print("⏪ Rolling back...")

@@ -93,6 +93,8 @@ insert into pista values (5, 'pista 5', 35);
 select to_char(fecha, 'HH:MM:SS') from partido;
 select * from pista;
 
+
+
 /* TEST TRIGGER */
 -- se_juega_en(num_pista, cod_partido)
 
